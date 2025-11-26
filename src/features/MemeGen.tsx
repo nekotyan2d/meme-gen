@@ -83,10 +83,30 @@ function MemeGen() {
         link.click();
     }
 
-    function downloadButton() {
+    function generateText() {
+        const phrase = [
+            "дикий огурец",
+            "булочка",
+            "АХХАХАХАХАХ",
+            "ахаха)",
+            "введите текст",
+            "opensuse",
+            "это реальное фото",
+            "забыл",
+        ];
+
+        setText(phrase[Math.round(Math.random() * (phrase.length - 1))]);
+    }
+
+    function actionButtons() {
         if (!image) return null;
 
-        return <button onClick={downloadMeme}>Сохранить</button>;
+        return (
+            <div className="action-buttons">
+                <button onClick={downloadMeme}>Сохранить</button>
+                <button onClick={generateText}>Сгенерировать текст</button>
+            </div>
+        );
     }
 
     return (
@@ -94,7 +114,7 @@ function MemeGen() {
             <h1>Meme Generator</h1>
             <button onClick={onImageUpload}>Загрузить изображение</button>
             {memeLayout()}
-            {downloadButton()}
+            {actionButtons()}
         </div>
     );
 }

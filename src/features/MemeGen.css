@@ -3,6 +3,12 @@
     flex-direction: column;
     gap: 16px;
     align-items: center;
+
+    .action-buttons {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 }
 .meme-layout {
     position: relative;
