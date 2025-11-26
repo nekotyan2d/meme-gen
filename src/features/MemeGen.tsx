@@ -26,16 +26,25 @@ function MemeGen() {
     const [image, setImage] = useState<string | null>(null);
     const [text, setText] = useState<string>("");
 
-    function memeImage() {
+    function memeLayout() {
         if (!image) return null;
 
         return (
-            <img
-                src={image}
-                alt="Meme"
-                className="meme-image"
-                style={{ maxWidth: "100%" }}
-            />
+            <div
+                className="meme-layout"
+                ref={memeRef}>
+                <img
+                    src={image}
+                    alt="Meme"
+                    className="meme-image"
+                    style={{ maxWidth: "100%" }}
+                />
+                <input
+                    value={text}
+                    className="meme-text"
+                    placeholder="введите текст"
+                    onChange={(e) => setText(e.target.value)}></input>
+            </div>
         );
     }
 
@@ -84,16 +93,7 @@ function MemeGen() {
         <div className="meme-generator">
             <h1>Meme Generator</h1>
             <button onClick={onImageUpload}>Загрузить изображение</button>
-            <div
-                className="meme-layout"
-                ref={memeRef}>
-                {memeImage()}
-                <input
-                    value={text}
-                    className="meme-text"
-                    onChange={(e) => setText(e.target.value)}></input>
-            </div>
-
+            {memeLayout()}
             {downloadButton()}
         </div>
     );
